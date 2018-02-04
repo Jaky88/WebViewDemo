@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="haveNew"
+            type="boolean" />
+
+        <variable
+            name="requestInfo"
+            type="com.jack.demo.webviewdemo.cloud.bean.UserLoginRequestBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_main_activity_title_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{listener::onClick}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/app_name"/>
+
+        <EditText
+            android:id="@+id/login_act_et_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={requestInfo.account}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/login_act_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="@={requestInfo.password}" />
+
+            <!--<ImageView-->
+                <!--android:id="@+id/user_login_show_password"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:onClick="@{listener::onClick}"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@{requestInfo.isShowPassword?@drawable/eye_open:@drawable/eye_close}"/>-->
+
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/login_act_cb_keep_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记住密码"
+            android:checked="@={requestInfo.isKeepPassword}"/>
+
+        <TextView
+            android:id="@+id/login_act_tv_startlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Login"
+            android:onClick="@{listener::onClick}"/>
+    </LinearLayout>
+</layout>

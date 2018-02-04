@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="mainBean"
+            type="com.jack.demo.webviewdemo.activity.model.ActivityMainModel" />
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="com.jack.demo.webviewdemo.activity.MainActivity">
+
+        <include
+            android:id="@+id/web_title"
+            layout="@layout/webview_layout"/>
+
+        <include
+            android:id="@+id/web_title2"
+            layout="@layout/webview_layout"/>
+
+        <com.jack.demo.webviewdemo.view.NestedPageRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+</layout>
