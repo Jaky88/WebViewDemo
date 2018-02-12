@@ -43,4 +43,11 @@ public class StringUtils {
 
         return count;
     }
+
+    public static String getBlankStr(String origin) {
+        if (StringUtils.isNullOrEmpty(origin)) {
+            return "";
+        }
+        return origin;
+    }
 }

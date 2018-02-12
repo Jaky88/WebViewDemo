@@ -7,7 +7,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 
 import com.jack.demo.webviewdemo.BR;
-import com.jack.demo.webviewdemo.utils.CommonNotices;
+import com.jack.demo.webviewdemo.utils.ToastUtils;
 import com.jack.demo.webviewdemo.Constants;
 import com.jack.demo.webviewdemo.R;
 import com.jack.demo.webviewdemo.MyApplication;
@@ -130,10 +130,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     private boolean checkLoginInfo() {
         if (TextUtils.isEmpty(userLoginRequestBean.account)) {
-            CommonNotices.show(getString(R.string.account_format_error_tips));
+            ToastUtils.show(getString(R.string.account_format_error_tips));
             return false;
         } else if (TextUtils.isEmpty(userLoginRequestBean.password)) {
-            CommonNotices.show(getString(R.string.password_format_error_tips));
+            ToastUtils.show(getString(R.string.password_format_error_tips));
             return false;
         }
 
@@ -166,22 +166,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onLoginError(String error) {
         dismissLoadDialog();
-        CommonNotices.show(error);
+        ToastUtils.show(error);
     }
 
     @Override
     public void onLoginException(Throwable e) {
         dismissLoadDialog();
         if (e instanceof ConnectException) {
-            CommonNotices.show(getString(R.string.common_tips_network_connection_exception));
+            ToastUtils.show(getString(R.string.common_tips_network_connection_exception));
         } else {
-            CommonNotices.show(getString(R.string.common_tips_request_failed));
+            ToastUtils.show(getString(R.string.common_tips_request_failed));
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onExceptionEvent(ExceptionEvent event) {
-        CommonNotices.show(event.getError());
+        ToastUtils.show(event.getError());
     }
 }
 

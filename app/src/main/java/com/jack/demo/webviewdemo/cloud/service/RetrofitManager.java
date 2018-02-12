@@ -35,8 +35,8 @@ public class RetrofitManager {
     public static final Retrofit.Builder getBaseRetrofitBuilder(final String baseUrl) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(new MyFastJsonConverterFactory())
-                .client(getClient());
+                .client(getClient())
+                .addConverterFactory(new FastJsonConverterFactory());
     }
 
     public static OkHttpClient getClient() {
@@ -56,9 +56,14 @@ public class RetrofitManager {
         return client;
     }
 
-    public static final ContentApi getContentService(final String baseUrl) {
+    public static final ISunService getSunService() {
+        return getRetrofit(BASE_URL)
+                .create(ISunService.class);
+    }
+
+    public static final ISunService getSunService(final String baseUrl) {
         return getRetrofit(baseUrl)
-                .create(ContentApi.class);
+                .create(ISunService.class);
     }
 
     public static class Practices{

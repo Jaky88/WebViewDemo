@@ -14,7 +14,7 @@ import retrofit2.http.Path;
  * Created by li on 2017/10/10.
  */
 
-public interface ContentApi {
+public interface ISunService {
 
 
     @GET("/api/practice/{id}")

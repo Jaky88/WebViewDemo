@@ -18,7 +18,7 @@ import retrofit2.Retrofit;
  * Created by jaky on 2018/2/11 0011.
  */
 
-public class MyFastJsonConverterFactory extends Converter.Factory {
+public class FastJsonConverterFactory extends Converter.Factory {
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=UTF-8");
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(final Type type, Annotation[] annotations, Retrofit retrofit) {

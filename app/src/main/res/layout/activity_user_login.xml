@@ -81,6 +81,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Login"
+            android:background="@android:drawable/dialog_frame"
             android:onClick="@{listener::onClick}"/>
     </LinearLayout>
 </layout>
