@@ -15,7 +15,7 @@ import retrofit2.Retrofit;
  * Created by li on 2017/10/10.
  */
 
-public class CloudApiContext {
+public class RetrofitManager {
     public static final String SECOND_URL = "http://120.55.45.184:9001/";
     public static String BASE_URL = "http://116.62.152.51:9001/";
     public static final String APPEND_URL = "http://owiju9mp2.bkt.clouddn.com/";
@@ -33,13 +33,10 @@ public class CloudApiContext {
     }
 
     public static final Retrofit.Builder getBaseRetrofitBuilder(final String baseUrl) {
-        return new Retrofit.Builder().baseUrl(baseUrl)
-                .addConverterFactory(FastJsonConverterFactory.create())
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(new MyFastJsonConverterFactory())
                 .client(getClient());
-    }
-
-    public static final ContentService getService(final String baseUrl) {
-        return getRetrofit(baseUrl).create(ContentService.class);
     }
 
     public static OkHttpClient getClient() {
@@ -57,6 +54,11 @@ public class CloudApiContext {
             }
         }).build();
         return client;
+    }
+
+    public static final ContentApi getContentService(final String baseUrl) {
+        return getRetrofit(baseUrl)
+                .create(ContentApi.class);
     }
 
     public static class Practices{

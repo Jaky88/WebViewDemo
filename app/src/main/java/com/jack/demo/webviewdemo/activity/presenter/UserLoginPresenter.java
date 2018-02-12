@@ -4,7 +4,7 @@ package com.jack.demo.webviewdemo.activity.presenter;
 import com.jack.demo.webviewdemo.activity.viewinterface.UserLoginView;
 import com.jack.demo.webviewdemo.cloud.bean.LoginRequestBean;
 import com.jack.demo.webviewdemo.cloud.bean.UserLoginResultBean;
-import com.jack.demo.webviewdemo.cloud.service.CloudApiContext;
+import com.jack.demo.webviewdemo.cloud.service.RetrofitManager;
 import com.jack.demo.webviewdemo.observerble.ObserverbleFactory;
 
 import io.reactivex.Observer;
@@ -36,7 +36,7 @@ public class UserLoginPresenter {
                 if (resultBean == null) {
                     return;
                 }
-                if (resultBean.code == CloudApiContext.HttpReusltCode.RESULT_CODE_SUCCESS) {
+                if (resultBean.code == RetrofitManager.HttpReusltCode.RESULT_CODE_SUCCESS) {
                     loginView.onLoginSucceed(resultBean.data);
                 } else {
                     loginView.onLoginFailed(resultBean.code, resultBean.msg);

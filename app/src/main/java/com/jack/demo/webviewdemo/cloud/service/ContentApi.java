@@ -14,11 +14,11 @@ import retrofit2.http.Path;
  * Created by li on 2017/10/10.
  */
 
-public interface ContentService {
+public interface ContentApi {
 
 
     @GET("/api/practice/{id}")
-    Call<TaskBean> getTaskDetail(@Path(CloudApiContext.Practices.ID) int id);
+    Call<TaskBean> getTaskDetail(@Path(RetrofitManager.Practices.ID) int id);
 
     @POST("api/auth/login")
     Call<UserLoginResultBean> userLogin(@Body LoginRequestBean bean);
